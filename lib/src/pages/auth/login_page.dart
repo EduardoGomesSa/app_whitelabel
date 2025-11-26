@@ -22,6 +22,7 @@ class LoginPage extends StatelessWidget {
         body: LayoutBuilder(
           builder: (context, constraints) {
             return Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(

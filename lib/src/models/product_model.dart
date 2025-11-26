@@ -9,6 +9,7 @@ class ProductModel {
   final String? imageUrl;
   final String? raw;
   final String? normalized;
+  final String? token;
 
   ProductModel({
     required this.id,
@@ -18,6 +19,7 @@ class ProductModel {
     required this.name,
     required this.description,
     required this.price,
+    required this.token,
     this.imageUrl,
     this.raw,
     this.normalized,
@@ -35,6 +37,11 @@ class ProductModel {
       imageUrl: map['image_url'],
       raw: map['raw'],
       normalized: map['normalized'],
+      token: map['token'],
     );
+  }
+
+   static List<ProductModel> fromList(List list) {
+    return List<ProductModel>.from(list.map((x) => ProductModel.fromMap(x)));
   }
 }

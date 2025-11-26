@@ -30,7 +30,8 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromMap(Map<String, dynamic> 
+  map) {
     return UserModel(
       id: map['id']?.toInt(),
       name: map['name'],
