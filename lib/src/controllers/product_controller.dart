@@ -1,4 +1,5 @@
 import 'package:app_whitelabel/src/controllers/auth_controller.dart';
+import 'package:app_whitelabel/src/core/enums/order_type.dart';
 import 'package:app_whitelabel/src/core/utils/app_utils.dart';
 import 'package:app_whitelabel/src/models/product_model.dart';
 import 'package:app_whitelabel/src/repositories/product_repository.dart';
@@ -42,5 +43,16 @@ class ProductController extends GetxController {
     }
 
     isLoading.value = false;
+  }
+
+  Future<void> orderProducts(OrderType order) async {
+    products.sort((a, b) {
+      if (order == OrderType.asc) {
+        return a.price.compareTo(b.price);
+      }
+      return b.price.compareTo(a.price);
+    });
+
+    update();
   }
 }
