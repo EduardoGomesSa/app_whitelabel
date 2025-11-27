@@ -1,6 +1,7 @@
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
 import 'package:app_whitelabel/src/controllers/product_controller.dart';
 import 'package:app_whitelabel/src/core/utils/hex_color.dart';
+import 'package:app_whitelabel/src/pages/home/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,8 +39,8 @@ class HomePage extends StatelessWidget {
         return ListView.builder(
           itemCount: products.length,
           itemBuilder: (_, index) {
-            final p = products[index];
-            return ListTile(title: Text(p.name), subtitle: Text('ID: ${p.externalId}'));
+            final product = products[index];
+            return ProductCard(product: product);
           },
         );
       }),
