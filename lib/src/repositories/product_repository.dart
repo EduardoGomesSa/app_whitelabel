@@ -12,7 +12,7 @@ class ProductRepository {
     required String token,
     required int clientId,
   }) async {
-    String endpoint = "${Url.base}/products/external/$clientId";
+    String endpoint = "${Url.base}/products/$clientId";
 
     final response = await httpManager.request(
       url: endpoint,
@@ -22,7 +22,6 @@ class ProductRepository {
         'Content-Type': 'application/json',
       },
     );
-    print("RESPONSE ==> $response");
 
     if (response['success']) {
       return ApiResult<List<ProductModel>>(

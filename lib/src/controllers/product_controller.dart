@@ -16,10 +16,10 @@ class ProductController extends GetxController {
   });
 
   RxList<ProductModel> products = <ProductModel>[].obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
-    print("🔥 ProductController ONINIT rodou!");
     super.onInit();
     loadProducts();
   }
@@ -27,11 +27,9 @@ class ProductController extends GetxController {
   Future<void> loadProducts() async {
     String? token = auth.user.token;
 
-    if (auth.user.token == null) {
-      print("❌ Sem token válido no AuthController");
-      return;
-    }
+    if (auth.user.token == null) return;
 
+    isLoading.value = true;
     final result = await repository.listProducts(
       token: token!,
       clientId: auth.clientController.client.value!.id,
@@ -42,5 +40,7 @@ class ProductController extends GetxController {
     } else {
       appUtils.showToast(message: result.message!, isError: result.isError);
     }
+
+    isLoading.value = false;
   }
 }

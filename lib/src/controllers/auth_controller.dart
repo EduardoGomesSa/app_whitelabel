@@ -22,8 +22,6 @@ class AuthController extends GetxController {
 
   RxBool isLoading = false.obs;
   UserModel user = UserModel();
-  RxBool isGuest = false.obs;
-  RxBool hasInternet = true.obs;
 
   @override
   Future<void> onInit() async {

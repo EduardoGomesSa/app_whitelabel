@@ -32,6 +32,20 @@ class HomePage extends StatelessWidget {
       body: Obx(() {
         final products = productController.products;
 
+        if (productController.isLoading.value) {
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor:
+                  clientController.client.value?.theme.primaryColor != null
+                  ? HexColor(clientController.client.value!.theme.primaryColor!)
+                  : Colors.blue,
+              color: clientController.client.value?.theme.primaryColor != null
+                  ? HexColor(clientController.client.value!.theme.primaryColor!)
+                  : Colors.blue,
+            ),
+          );
+        }
+
         if (products.isEmpty) {
           return const Center(child: Text('Nenhum produto encontrado'));
         }
