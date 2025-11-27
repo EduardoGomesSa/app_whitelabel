@@ -45,6 +45,26 @@ class ProductController extends GetxController {
     isLoading.value = false;
   }
 
+  Future<void> getProducts(String searchTerm) async {
+    String? token = auth.user.token;
+
+    if (auth.user.token == null) return;
+
+    isLoading.value = true;
+    final result = await repository.searchProducts(
+      token: token!,
+      searchTerm: searchTerm,
+    );
+
+    if (!result.isError) {
+      products.assignAll(result.data!);
+    } else {
+      appUtils.showToast(message: result.message!, isError: result.isError);
+    }
+
+    isLoading.value = false;
+  }
+
   Future<void> orderProducts(OrderType order) async {
     products.sort((a, b) {
       if (order == OrderType.asc) {

@@ -29,7 +29,7 @@ class SearchWidget extends StatelessWidget {
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(0),
                       border: InputBorder.none,
-                      hintText: 'Buscar empresa',
+                      hintText: 'Digite o nome do produto',
                       hintStyle: TextStyle(color: Colors.black),
                     ),
                   ),
