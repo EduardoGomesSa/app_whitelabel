@@ -5,7 +5,6 @@ import 'package:app_whitelabel/src/core/routes/app_routes_pages.dart';
 import 'package:app_whitelabel/src/core/utils/api_result.dart';
 import 'package:app_whitelabel/src/core/utils/app_utils.dart';
 import 'package:app_whitelabel/src/core/utils/auth_result.dart';
-import 'package:app_whitelabel/src/models/client_model.dart';
 import 'package:app_whitelabel/src/models/user_model.dart';
 import 'package:app_whitelabel/src/repositories/auth_repository.dart';
 import 'package:get/get.dart';

@@ -22,9 +22,9 @@ class ProductRepository {
         'Content-Type': 'application/json',
       },
     );
-    print(token);
+    print("RESPONSE ==> $response");
 
-    if (response['data'] != null) {
+    if (response['success']) {
       return ApiResult<List<ProductModel>>(
         data: ProductModel.fromList(response['data'] as List),
       );

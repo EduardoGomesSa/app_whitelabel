@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
           itemCount: products.length,
           itemBuilder: (_, index) {
             final p = products[index];
-            return ListTile(title: Text(p.name), subtitle: Text('ID: ${p.id}'));
+            return ListTile(title: Text(p.name), subtitle: Text('ID: ${p.externalId}'));
           },
         );
       }),

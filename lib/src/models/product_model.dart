@@ -35,7 +35,7 @@ class ProductModel {
       description: map['description'],
       price: double.tryParse(map['price'].toString()) ?? 0.0,
       imageUrl: map['image_url'],
-      raw: map['raw'],
+      // raw: map['raw'],
       normalized: map['normalized'],
       token: map['token'],
     );
