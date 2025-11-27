@@ -91,7 +91,7 @@ class AuthRepository {
   }
 
   Future<ApiResult<bool>> signOut({required String token}) async {
-    const String endpoint = "${Url.base}/logout";
+    const String endpoint = "${Url.base}/auth/logout";
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.post,

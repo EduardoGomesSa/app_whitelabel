@@ -51,7 +51,6 @@ class AuthController extends GetxController {
   }
 
   Future validateToken() async {
-    print("Tentou Validar Token => Corinthians!!!");
     String? token = await appUtils.getLocalData(key: 'user-token');
 
     if (token != null) {

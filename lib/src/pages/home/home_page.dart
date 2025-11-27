@@ -1,3 +1,4 @@
+import 'package:app_whitelabel/src/controllers/auth_controller.dart';
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
 import 'package:app_whitelabel/src/controllers/product_controller.dart';
 import 'package:app_whitelabel/src/core/utils/hex_color.dart';
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final clientController = Get.find<ClientController>();
     final productController = Get.find<ProductController>();
+    final authController = Get.find<AuthController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -21,6 +23,12 @@ class HomePage extends StatelessWidget {
             : Colors.blue,
         title: const Text('Produtos'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              authController.signOut();
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
