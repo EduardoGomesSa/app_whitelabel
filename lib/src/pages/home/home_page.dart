@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16.0, bottom: 16),
+            padding: const EdgeInsets.only(top: 12, bottom: 5),
             child: Row(
               children: [
                 Expanded(child: SearchWidget(onSearch: searchProducts)),
