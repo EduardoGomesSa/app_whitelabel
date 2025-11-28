@@ -31,7 +31,6 @@ class AuthRepository {
       await appUtils.saveLocalData(key: "user-token", data: response['access_token']);
 
       final authResult = AuthResult(user: user, client: client);
-      print("NEW TOKEN => ${response['access_token']}");
 
       return ApiResult<AuthResult>(data: authResult);
     } else {
@@ -49,7 +48,6 @@ class AuthRepository {
       method: HttpMethods.post,
       headers: {'Authorization': 'Bearer $token'},
     );
-    print("O TOKEN É: $token");
 
     if (response['statusCode'] != 401) {
       UserModel user = UserModel.fromMap(response['data']['user']);

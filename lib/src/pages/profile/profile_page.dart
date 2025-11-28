@@ -15,7 +15,6 @@ class ProfilePage extends StatelessWidget {
     final authController = Get.find<AuthController>();
 
     final primaryColor = clientController.client.value?.theme.primaryColor;
-    // final primary = themeColor != null ? HexColor(themeColor) : const Color(0xFFAD059E);
 
     final company = clientController.client.value;
 
@@ -116,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                   height: 120,
                   width: double.infinity,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => const Icon(
+                  errorBuilder: (_, _, _) => const Icon(
                     Icons.broken_image,
                     size: 60,
                     color: Colors.grey,
