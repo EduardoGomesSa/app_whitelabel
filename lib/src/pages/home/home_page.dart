@@ -5,6 +5,7 @@ import 'package:app_whitelabel/src/core/enums/order_type.dart';
 import 'package:app_whitelabel/src/core/utils/hex_color.dart';
 import 'package:app_whitelabel/src/pages/home/widgets/product_card.dart';
 import 'package:app_whitelabel/src/pages/home/widgets/search_widget.dart';
+import 'package:app_whitelabel/src/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,93 +24,111 @@ class HomePage extends StatelessWidget {
       productController.getProducts(searchTerm);
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor:
-            clientController.client.value?.theme.primaryColor != null
-            ? HexColor(clientController.client.value!.theme.primaryColor!)
-            : Colors.blue,
-        title: const Text('Produtos'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              authController.signOut();
-            },
-          ),
-          PopupMenuButton<OrderType>(
-            icon: const Icon(Icons.sort),
-            onSelected: (value) {
-              productController.orderProducts(value);
-            },
-            itemBuilder: (_) => [
-              const PopupMenuItem(
-                value: OrderType.asc,
-                child: Text("Menor preço"),
-              ),
-              const PopupMenuItem(
-                value: OrderType.desc,
-                child: Text("Maior preço"),
-              ),
-            ],
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 12, bottom: 5),
-            child: Row(
-              children: [
-                Expanded(child: SearchWidget(onSearch: searchProducts)),
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          backgroundColor:
+              clientController.client.value?.theme.primaryColor != null
+              ? HexColor(clientController.client.value!.theme.primaryColor!)
+              : Colors.blue,
+          title: Text('Bem vindo a ${clientController.client.value?.name ?? 'loja'}'),
+          actions: [
+            PopupMenuButton<OrderType>(
+              icon: const Icon(Icons.sort),
+              onSelected: (value) {
+                productController.orderProducts(value);
+              },
+              itemBuilder: (_) => [
+                const PopupMenuItem(
+                  value: OrderType.asc,
+                  child: Text("Menor preço"),
+                ),
+                const PopupMenuItem(
+                  value: OrderType.desc,
+                  child: Text("Maior preço"),
+                ),
               ],
             ),
-          ),
-          Expanded(
-            child: RefreshIndicator(
-              key: refreshIndicatorKey,
-              onRefresh: () async {
-                productController.loadProducts();
-              },
-              child: Obx(() {
-                final products = productController.products;
-            
-                if (productController.isLoading.value) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor:
-                          clientController.client.value?.theme.primaryColor !=
-                              null
-                          ? HexColor(
-                              clientController.client.value!.theme.primaryColor!,
-                            )
-                          : Colors.blue,
-                      color:
-                          clientController.client.value?.theme.primaryColor !=
-                              null
-                          ? HexColor(
-                              clientController.client.value!.theme.primaryColor!,
-                            )
-                          : Colors.blue,
-                    ),
-                  );
-                }
-            
-                if (products.isEmpty) {
-                  return const Center(child: Text('Nenhum produto encontrado'));
-                }
-            
-                return ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (_, index) {
-                    final product = products[index];
-                    return ProductCard(product: product);
-                  },
+            IconButton(
+              padding: const EdgeInsets.only(right: 10),
+              icon: const Icon(Icons.person),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(user: authController.user),
+                  ),
                 );
-              }),
+              },
             ),
-          ),
-        ],
+          ],
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 5),
+              child: Row(
+                children: [
+                  Expanded(child: SearchWidget(onSearch: searchProducts)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: RefreshIndicator(
+                key: refreshIndicatorKey,
+                onRefresh: () async {
+                  productController.loadProducts();
+                },
+                child: Obx(() {
+                  final products = productController.products;
+      
+                  if (productController.isLoading.value) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor:
+                            clientController.client.value?.theme.primaryColor !=
+                                null
+                            ? HexColor(
+                                clientController
+                                    .client
+                                    .value!
+                                    .theme
+                                    .primaryColor!,
+                              )
+                            : Colors.blue,
+                        color:
+                            clientController.client.value?.theme.primaryColor !=
+                                null
+                            ? HexColor(
+                                clientController
+                                    .client
+                                    .value!
+                                    .theme
+                                    .primaryColor!,
+                              )
+                            : Colors.blue,
+                      ),
+                    );
+                  }
+      
+                  if (products.isEmpty) {
+                    return const Center(child: Text('Nenhum produto encontrado'));
+                  }
+      
+                  return ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (_, index) {
+                      final product = products[index];
+                      return ProductCard(product: product);
+                    },
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

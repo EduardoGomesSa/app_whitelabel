@@ -1,5 +1,5 @@
+import 'package:app_whitelabel/src/models/client_model.dart';
 import 'package:get/get.dart';
-import '../models/client_model.dart';
 
 class ClientController extends GetxController {
   Rx<ClientModel?> client = Rx<ClientModel?>(null);
