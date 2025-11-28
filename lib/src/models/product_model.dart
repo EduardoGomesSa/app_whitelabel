@@ -1,5 +1,5 @@
 class ProductModel {
-  final int id;
+  final int? id;
   final int clientId;
   final int providerId;
   final String? externalId;

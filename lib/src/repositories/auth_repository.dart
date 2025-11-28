@@ -28,40 +28,16 @@ class AuthRepository {
       UserModel user = UserModel.fromMap(response['user']);
       final client = ClientModel.fromMap(response['client']);
 
-      appUtils.saveLocalData(key: "user-token", data: response['access_token']);
+      await appUtils.saveLocalData(key: "user-token", data: response['access_token']);
 
       final authResult = AuthResult(user: user, client: client);
+      print("NEW TOKEN => ${response['access_token']}");
 
       return ApiResult<AuthResult>(data: authResult);
     } else {
       String message =
           response['error'] ?? 'Não foi possível fazer login. Tente novamente!';
       return ApiResult<AuthResult>(message: message, isError: true);
-    }
-  }
-
-  Future<ApiResult<UserModel>> signUp(UserModel user) async {
-    const String endpoint = "${Url.base}/register";
-
-    Map<String, dynamic> body = user.toMap();
-    body['password_confirmation'] = user.password;
-
-    final response = await httpManager.request(
-      url: endpoint,
-      method: HttpMethods.post,
-      body: body,
-    );
-
-    if (response['data'] != null) {
-      UserModel user = UserModel.fromMap(response['data']);
-
-      return ApiResult<UserModel>(data: user);
-    } else {
-      String message =
-          response['message'] ??
-          'Não foi possível fazer o cadastro.Tente novamente!';
-
-      return ApiResult<UserModel>(message: message, isError: true);
     }
   }
 
@@ -73,8 +49,9 @@ class AuthRepository {
       method: HttpMethods.post,
       headers: {'Authorization': 'Bearer $token'},
     );
+    print("O TOKEN É: $token");
 
-    if (response['data'] != null) {
+    if (response['statusCode'] != 401) {
       UserModel user = UserModel.fromMap(response['data']['user']);
       user.token = response['data']['access_token'];
       final client = ClientModel.fromMap(response['data']['client']);

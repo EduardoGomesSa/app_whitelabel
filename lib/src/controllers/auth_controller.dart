@@ -51,6 +51,7 @@ class AuthController extends GetxController {
   }
 
   Future validateToken() async {
+    print("VALIDATE executado em: ${DateTime.now()}");
     String? token = await appUtils.getLocalData(key: 'user-token');
 
     if (token != null) {
