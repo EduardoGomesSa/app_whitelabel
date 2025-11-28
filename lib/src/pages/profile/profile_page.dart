@@ -1,6 +1,5 @@
 import 'package:app_whitelabel/src/controllers/auth_controller.dart';
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
-import 'package:app_whitelabel/src/core/utils/hex_color.dart';
 import 'package:app_whitelabel/src/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,8 +14,8 @@ class ProfilePage extends StatelessWidget {
     final clientController = Get.find<ClientController>();
     final authController = Get.find<AuthController>();
 
-    final themeColor = clientController.client.value?.theme.primaryColor;
-    final primary = themeColor != null ? HexColor(themeColor) : Colors.blue;
+    final primaryColor = clientController.client.value?.theme.primaryColor;
+    // final primary = themeColor != null ? HexColor(themeColor) : const Color(0xFFAD059E);
 
     final company = clientController.client.value;
 
@@ -24,7 +23,7 @@ class ProfilePage extends StatelessWidget {
       top: false,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: primary,
+          backgroundColor: primaryColor,
           title: const Text('Perfil do usuário'),
         ),
         body: Padding(

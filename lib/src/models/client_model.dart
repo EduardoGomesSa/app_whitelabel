@@ -1,3 +1,6 @@
+import 'package:app_whitelabel/src/core/utils/hex_color.dart';
+import 'package:flutter/material.dart';
+
 class ClientModel {
   final int id;
   final String name;
@@ -24,8 +27,8 @@ class ClientModel {
 class ThemeModel {
   final String? logo;
   final String? layout;
-  final String? primaryColor;
-  final String? secondaryColor;
+  final Color? primaryColor;
+  final Color? secondaryColor;
 
   ThemeModel({
     this.logo,
@@ -38,8 +41,8 @@ class ThemeModel {
     return ThemeModel(
       logo: map['logo'],
       layout: map['layout'],
-      primaryColor: map['primaryColor'],
-      secondaryColor: map['secondaryColor'],
+      primaryColor: map['primary'] != null ? HexColor(map['primary']) : const Color(0xFFAD059E),
+      secondaryColor: map['secondary'] != null ? HexColor(map['secondary']) : const Color.fromARGB(255, 238, 167, 232),
     );
   }
 }

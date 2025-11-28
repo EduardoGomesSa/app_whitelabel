@@ -1,5 +1,4 @@
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
-import 'package:app_whitelabel/src/core/utils/hex_color.dart';
 import 'package:app_whitelabel/src/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,9 +14,7 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
-            clientController.client.value?.theme.primaryColor != null
-            ? HexColor(clientController.client.value!.theme.primaryColor!)
-            : Colors.blue,
+            clientController.client.value?.theme.primaryColor,
         title: Text("Informações do Produto"),
       ),
       body: Padding(

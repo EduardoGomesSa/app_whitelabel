@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'App Whitelabel',
       theme: ThemeData(
         primaryColor: const Color(0xFFAD059E),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.grey[200],
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
             iconTheme: IconThemeData(color: Colors.black)),

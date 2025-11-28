@@ -30,9 +30,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor:
-              clientController.client.value?.theme.primaryColor != null
-              ? HexColor(clientController.client.value!.theme.primaryColor!)
-              : Colors.blue,
+              clientController.client.value?.theme.primaryColor,
           title: Text('Bem vindo a ${clientController.client.value?.name ?? 'loja'}'),
           actions: [
             PopupMenuButton<OrderType>(
@@ -88,27 +86,9 @@ class HomePage extends StatelessWidget {
                     return Center(
                       child: CircularProgressIndicator(
                         backgroundColor:
-                            clientController.client.value?.theme.primaryColor !=
-                                null
-                            ? HexColor(
-                                clientController
-                                    .client
-                                    .value!
-                                    .theme
-                                    .primaryColor!,
-                              )
-                            : Colors.blue,
+                            clientController.client.value?.theme.primaryColor,
                         color:
-                            clientController.client.value?.theme.primaryColor !=
-                                null
-                            ? HexColor(
-                                clientController
-                                    .client
-                                    .value!
-                                    .theme
-                                    .primaryColor!,
-                              )
-                            : Colors.blue,
+                            clientController.client.value?.theme.primaryColor,
                       ),
                     );
                   }

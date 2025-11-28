@@ -1,5 +1,4 @@
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
-import 'package:app_whitelabel/src/core/utils/hex_color.dart';
 import 'package:app_whitelabel/src/models/product_model.dart';
 import 'package:app_whitelabel/src/pages/product/product_page.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +28,7 @@ class ProductCard extends StatelessWidget {
           },
           child: Card(
             elevation: 2,
-            color: clientController.client.value?.theme.primaryColor != null
-                ? HexColor(clientController.client.value!.theme.primaryColor!)
-                : Colors.white,
+            color: clientController.client.value?.theme.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -51,35 +48,32 @@ class ProductCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
 
-                  // TEXTOS
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // TÍTULO
                         Text(
                           product.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                         ),
 
                         const SizedBox(height: 4),
 
-                        // DESCRIÇÃO — limitada
                         Expanded(
                           child: Text(
                             product.description,
                             maxLines:
-                                3, // limite de linhas dentro da altura fixa
+                                3, 
                             overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 15, color: Colors.grey[900]),
                           ),
                         ),
                       ],
                     ),
                   ),
 
-                  // PREÇO
                   Text(
                     "R\$ ${product.price.toStringAsFixed(2)}",
                     style: const TextStyle(
