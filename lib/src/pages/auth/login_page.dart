@@ -16,14 +16,34 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFFAD059E),
         resizeToAvoidBottomInset: true,
         body: LayoutBuilder(
           builder: (context, constraints) {
             return Column(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                Expanded(
+                  child: SizedBox(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/images/in8.png", scale: 1.9),
+                          Text(
+                            "O futuro começa com aqui!",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 32,
@@ -60,6 +80,7 @@ class LoginPage extends StatelessWidget {
                             builder: (controller) {
                               return ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFFAD059E),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),

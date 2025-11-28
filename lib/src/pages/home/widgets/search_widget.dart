@@ -25,12 +25,12 @@ class SearchWidget extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     controller: searchController,
-                    style: const TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.black54),
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(0),
                       border: InputBorder.none,
                       hintText: 'Digite o nome do produto',
-                      hintStyle: TextStyle(color: Colors.black),
+                      hintStyle: TextStyle(color: Colors.black38),
                     ),
                   ),
                 ),

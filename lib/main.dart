@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'App Whitelabel',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFFAD059E),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),

@@ -14,81 +14,39 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final clientController = Get.find<ClientController>();
     final authController = Get.find<AuthController>();
+
+    final themeColor = clientController.client.value?.theme.primaryColor;
+    final primary = themeColor != null ? HexColor(themeColor) : Colors.blue;
+
+    final company = clientController.client.value;
+
     return SafeArea(
       top: false,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor:
-              clientController.client.value?.theme.primaryColor != null
-              ? HexColor(clientController.client.value!.theme.primaryColor!)
-              : Colors.blue,
-          title: Text('Perfil do usuário'),
+          backgroundColor: primary,
+          title: const Text('Perfil do usuário'),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      'Olá! ${user.name}',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      'Email cadastrado: ${user.email}',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Center(
-                    child: Card(
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Informações da empresa:',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Image.network(
-                              clientController.client.value?.theme.logo ?? "",
-                              height: 200,
-                              width: double.infinity,
-                            ),
-                            const SizedBox(height: 4),
-                            Center(
-                              child: Text(
-                                clientController.client.value?.name ?? 'Não informado',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              Expanded(
+                child: ListView(
+                  children: [
+                    _sectionTitle("Seus dados"),
+                    _userInfoCard(user),
+
+                    const SizedBox(height: 20),
+                    _sectionTitle("Informações da empresa"),
+                    _companyInfoCard(company),
+                  ],
+                ),
               ),
 
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 55,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -97,12 +55,14 @@ class ProfilePage extends StatelessWidget {
                       side: BorderSide(color: Colors.red[700]!, width: 1),
                     ),
                   ),
-                  onPressed: () {
-                    authController.signOut();
-                  },
+                  onPressed: () => authController.signOut(),
                   child: Text(
                     "Sair do aplicativo",
-                    style: TextStyle(fontSize: 18, color: Colors.red[700]),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.red[700],
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -110,6 +70,89 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _sectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+
+  Widget _userInfoCard(UserModel user) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _infoRow("Nome", user.name!),
+            const SizedBox(height: 10),
+            _infoRow("Email", user.email!),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _companyInfoCard(company) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            if (company?.theme.logo != null && company!.theme.logo!.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  company.theme.logo!,
+                  height: 120,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => const Icon(
+                    Icons.broken_image,
+                    size: 60,
+                    color: Colors.grey,
+                  ),
+                ),
+              )
+            else
+              const Icon(
+                Icons.image_not_supported,
+                size: 60,
+                color: Colors.grey,
+              ),
+
+            const SizedBox(height: 12),
+            Text(
+              company?.name ?? "Empresa não informada",
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _infoRow(String title, String value) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+        ),
+        const SizedBox(height: 4),
+        Text(value, style: const TextStyle(fontSize: 16)),
+      ],
     );
   }
 }
