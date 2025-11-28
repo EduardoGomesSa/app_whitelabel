@@ -34,7 +34,7 @@ class ProductModel {
       name: map['name'],
       description: map['description'],
       price: double.tryParse(map['price'].toString()) ?? 0.0,
-      imageUrl: map['image_url'],
+      imageUrl: "https://picsum.photos/200/301",
       // raw: map['raw'],
       normalized: map['normalized'],
       token: map['token'],
