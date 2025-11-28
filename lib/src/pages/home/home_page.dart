@@ -2,7 +2,6 @@ import 'package:app_whitelabel/src/controllers/auth_controller.dart';
 import 'package:app_whitelabel/src/controllers/client_controller.dart';
 import 'package:app_whitelabel/src/controllers/product_controller.dart';
 import 'package:app_whitelabel/src/core/enums/order_type.dart';
-import 'package:app_whitelabel/src/core/utils/hex_color.dart';
 import 'package:app_whitelabel/src/pages/home/widgets/product_card.dart';
 import 'package:app_whitelabel/src/pages/home/widgets/search_widget.dart';
 import 'package:app_whitelabel/src/pages/profile/profile_page.dart';
