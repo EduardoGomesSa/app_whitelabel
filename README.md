@@ -63,12 +63,11 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 ```bash
   git clone https://github.com/EduardoGomesSa/app_whitelabel.git
 ```
-3. Crie um .env 
+3. Coloque o link da sua api na variável ``base`` no arquivo Urls que fica em src/core/utils
 4. Instale as dependências
 ```bash
   flutter pub get
 ```
-5. Coloque o link da sua api na variável do .env
 
 ## Tecnologias
 - ``Flutter``: Framework multiplataforma que usa Dart para criar apps nativos com alta performance e código seguro.
