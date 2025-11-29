@@ -64,8 +64,9 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 ```bash
   git clone https://github.com/EduardoGomesSa/app_whitelabel.git
 ```
-3. Coloque o link da sua api na variável ``base`` no arquivo Urls que fica em src/core/utils
-4. Instale as dependências
+3. Crie um .env na raiz do projeto
+4. Coloque o endereço da sua api na variável API_URL
+5. Instale as dependências
 ```bash
   flutter pub get
 ```
