@@ -2,6 +2,7 @@
 
 - [Descrição](#descrição)
 - [Instalação](#instalação)
+- [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
 - [Telas](#telas)
@@ -68,7 +69,14 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 ```bash
   flutter pub get
 ```
-
+## Funcionalidades
+- ``Login``: usuários podem logar-se com e-mail e senha
+- ``Logout``: Usuários podem sair do app quando desejarem
+- ``Ordernação por preço``: Usuário pode visualizar produtos pelo maior ou menor valor
+- ``Buscar por nome``: usuário pode buscar produtos pelo nome ou partes dele
+- ``Informações do produto``: Usuário pode ver detalhes do produto
+- ``Whitelabel``: layout do app muda dependendo do cliente
+  
 ## Tecnologias
 - ``Flutter``: Framework multiplataforma que usa Dart para criar apps nativos com alta performance e código seguro.
 - ``GetX``: Biblioteca para Flutter que oferece gerenciamento de estado, injeção de dependência e navegação de forma simples e eficiente.
