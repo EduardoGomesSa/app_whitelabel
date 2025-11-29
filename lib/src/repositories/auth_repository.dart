@@ -16,7 +16,7 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    const String endpoint = "${Url.base}/auth/login";
+    final String endpoint = "${Url.base}/auth/login";
 
     final response = await httpManager.request(
       url: endpoint,
@@ -41,7 +41,7 @@ class AuthRepository {
   }
 
   Future<ApiResult<AuthResult>> validateToken(String token) async {
-    const String endpoint = "${Url.base}/auth/validate";
+    final String endpoint = "${Url.base}/auth/validate";
 
     final response = await httpManager.request(
       url: endpoint,
@@ -66,7 +66,7 @@ class AuthRepository {
   }
 
   Future<ApiResult<bool>> signOut({required String token}) async {
-    const String endpoint = "${Url.base}/auth/logout";
+    final String endpoint = "${Url.base}/auth/logout";
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.post,
