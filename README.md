@@ -2,9 +2,11 @@
 
 - [Descrição](#descrição)
 - [Instalação](#instalação)
+- [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
 - [Telas](#telas)
+- [Observação](#observação)
 
 ## Descrição
 <p>
@@ -62,13 +64,19 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 ```bash
   git clone https://github.com/EduardoGomesSa/app_whitelabel.git
 ```
-3. Crie um .env 
+3. Coloque o link da sua api na variável ``base`` no arquivo Urls que fica em src/core/utils
 4. Instale as dependências
 ```bash
   flutter pub get
 ```
-5. Coloque o link da sua api na variável do .env
-
+## Funcionalidades
+- ``Login``: usuários podem logar-se com e-mail e senha
+- ``Logout``: Usuários podem sair do app quando desejarem
+- ``Ordernação por preço``: Usuário pode visualizar produtos pelo maior ou menor valor
+- ``Buscar por nome``: usuário pode buscar produtos pelo nome ou partes dele
+- ``Informações do produto``: Usuário pode ver detalhes do produto
+- ``Whitelabel``: layout do app muda dependendo do cliente
+  
 ## Tecnologias
 - ``Flutter``: Framework multiplataforma que usa Dart para criar apps nativos com alta performance e código seguro.
 - ``GetX``: Biblioteca para Flutter que oferece gerenciamento de estado, injeção de dependência e navegação de forma simples e eficiente.
@@ -91,3 +99,30 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 <img width="253" height="438" alt="image" src="https://github.com/user-attachments/assets/ae2bf7e0-8632-4b42-a878-b25b84b4ddd0" />
 
 ## Telas
+### Auth
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/a0f690bb-5952-4dd1-aead-c9656cd6d0f0" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+### Tela de usuários de empresas diferentes
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8879ce3d-a0f0-4992-ab8a-8c8579931c13" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/2f62f1eb-9619-4bc7-9f92-08fc78d8cd3e" alt="register_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+### Exemplos em funcionamento
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/08853f89-5c8e-43d7-9ee5-39786213420d" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/0adb92a9-d3b2-4818-a4cf-38d9eae52296" alt="register_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+## Observação
+<p>⚠️ Atenção! ⚠️ O provedor de imagens dos produtos que vinham da API passada para o teste está fora do ar há um tempo, então eu utilizei uma abordagem alternativa, por isso as imagens de produtos são todas iguais,
+mas elas mudam conforme o usuário abre o app, é apenas para servir de ilustração.</p>
+
+
