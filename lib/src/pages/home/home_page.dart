@@ -28,9 +28,10 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
-          backgroundColor:
-              clientController.client.value?.theme.primaryColor,
-          title: Text('Bem vindo a ${clientController.client.value?.name ?? 'loja'}'),
+          backgroundColor: clientController.client.value?.theme.primaryColor,
+          title: Text(
+            'Bem vindo a ${clientController.client.value?.name ?? 'loja'}',
+          ),
           actions: [
             PopupMenuButton<OrderType>(
               icon: const Icon(Icons.sort),
@@ -55,7 +56,8 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProfilePage(user: authController.user),
+                    builder: (context) =>
+                        ProfilePage(user: authController.user),
                   ),
                 );
               },
@@ -80,7 +82,7 @@ class HomePage extends StatelessWidget {
                 },
                 child: Obx(() {
                   final products = productController.products;
-      
+
                   if (productController.isLoading.value) {
                     return Center(
                       child: CircularProgressIndicator(
@@ -91,11 +93,19 @@ class HomePage extends StatelessWidget {
                       ),
                     );
                   }
-      
+
                   if (products.isEmpty) {
-                    return const Center(child: Text('Nenhum produto encontrado'));
+                    return const Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.search_off, size: 100, color: Colors.grey),
+                          Text('Nenhum produto encontrado', style: TextStyle(color:Colors.grey, fontSize: 18),),
+                        ],
+                      ),
+                    );
                   }
-      
+
                   return ListView.builder(
                     itemCount: products.length,
                     itemBuilder: (_, index) {
