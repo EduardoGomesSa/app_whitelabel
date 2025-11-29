@@ -5,6 +5,7 @@
 - [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
 - [Telas](#telas)
+- [Observação](#observação)
 
 ## Descrição
 <p>
@@ -91,3 +92,30 @@ Fica a critério de cada um a forma de persistir os dados, mas o motivo de deter
 <img width="253" height="438" alt="image" src="https://github.com/user-attachments/assets/ae2bf7e0-8632-4b42-a878-b25b84b4ddd0" />
 
 ## Telas
+### Auth
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/a0f690bb-5952-4dd1-aead-c9656cd6d0f0" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+### Tela de usuários de empresas diferentes
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8879ce3d-a0f0-4992-ab8a-8c8579931c13" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/2f62f1eb-9619-4bc7-9f92-08fc78d8cd3e" alt="register_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+### Exemplos em funcionamento
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/08853f89-5c8e-43d7-9ee5-39786213420d" alt="login_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/0adb92a9-d3b2-4818-a4cf-38d9eae52296" alt="register_app" width="250" />
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+## Observação
+<p>⚠️ Atenção! ⚠️ O provedor de imagens dos produtos que vinham da API passada para o teste está fora do ar há um tempo, então eu utilizei uma abordagem alternativa, por isso as imagens de produtos são todas iguais,
+mas elas mudam conforme o usuário abre o app, é apenas para servir de ilustração.</p>
+
+
